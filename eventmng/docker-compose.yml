@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  data:
+    image: mysql:5.7
+    container_name: eventDB
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD='Abcd1234'
+      - MYSQL_USER='javateam'
+      - MYSQL_PASSWORD='Abcd1234'
+      - MYSQL_DATABASE='mydb'
+    restart: always
+    volumes:
+      - ./db_initial.sql:/docker-entrypoint-initdb.d/db_initial.sql
+    
