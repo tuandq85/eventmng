@@ -2,16 +2,14 @@ version: '3'
 
 services:
   data:
-    image: mysql:5.7
-    container_name: eventDB
+    image: postgres:11.1-alpine
+    container_name: eventmng_postgre
     ports:
-      - 3306:3306
+      - 5432:5432
     environment:
-      - MYSQL_ROOT_PASSWORD='Abcd1234'
-      - MYSQL_USER='javateam'
-      - MYSQL_PASSWORD='Abcd1234'
-      - MYSQL_DATABASE='mydb'
+      POSTGRES_DB: 'mydb'
+      POSTGRES_USER: 'bkteam'
+      POSTGRES_PASSWORD: 'Abcd1234'
     restart: always
     volumes:
       - ./db_initial.sql:/docker-entrypoint-initdb.d/db_initial.sql
-    
