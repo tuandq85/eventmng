@@ -217,7 +217,7 @@ INSERT INTO "public"."tbl_events"("title", "start_date", "start_time", "end_date
     TRUE, TRUE, 'Please come to the company before 8:00', TRUE, FALSE, FALSE, '2019-01-15 04:46:39.587628+00', '2019-01-15 05:46:39.587628+00', 1, 1);
 INSERT INTO "public"."tbl_events"("title", "start_date", "start_time", "end_date", "end_time", "is_daily", "is_all_day", "location", "is_notification", "owner", 
     "event_content", "guest_can_invite", "view_all_guest", "item_preparing", "is_public", "is_cancel", "is_delete", "time_create", "last_edit", "user_edit", "status") 
-    VALUES('Amazing Race ', '2019-01-10', '06:00:00', '2019-01-10', '22:00:00', FALSE, FALSE, 'Hue', TRUE, 1, 'We hope you had as much fun and excitement.', TRUE, TRUE, 'Please come to the company ontime', 
+    VALUES('Amazing Race ', '2019-01-10', '06:00:00', '2019-01-10', '22:00:00', FALSE, FALSE, 'Hue', TRUE, 1, 'We hope you had as much fun and excitement.', TRUE, TRUE, 'Please come to the company ontime', 
     TRUE, FALSE, FALSE, '2019-01-10 04:46:39.587628+00', '2019-01-10 05:46:39.587628+00', 2, 3);
 
 INSERT INTO "public"."tbl_events_history"("title", "start_date", "start_time", "end_date", "end_time", "is_daily", "is_all_day", "location", "is_notification", 
@@ -230,7 +230,7 @@ INSERT INTO "public"."tbl_events_history"("title", "start_date", "start_time", "
     TRUE, TRUE, 'Please come to the company before 8:00', FALSE, FALSE, '2019-01-20 04:46:39.587628+00', '2019-01-20 05:46:39.587628+00', 1, 2);
 INSERT INTO "public"."tbl_events_history"("title", "start_date", "start_time", "end_date", "end_time", "is_daily", "is_all_day", "location", "is_notification", 
     "owner", "event_content", "guest_can_invite", "view_all_guest", "item_preparing", "is_cancel", "is_delete", "time_create", "last_edit", "user_edit", "event_id") 
-    VALUES('Amazing Race ', '2019-01-12', '06:00:00', '2019-01-12', '22:00:00', FALSE, FALSE, 'Hue', TRUE, 1, 'We hope you had as much fun and excitement.', 
+    VALUES('Amazing Race ', '2019-01-12', '06:00:00', '2019-01-12', '22:00:00', FALSE, FALSE, 'Hue', TRUE, 1, 'We hope you had as much fun and excitement.', 
     TRUE, TRUE, 'Please come to the company ontime', FALSE, FALSE, '2019-01-12 04:46:39.587628+00', '2019-01-12 05:46:39.587628+00', 2, 3);
 
 INSERT INTO "public"."tbl_group"("group_name", "is_delete") VALUES('Goths', FALSE);
@@ -261,4 +261,24 @@ INSERT INTO "public"."tbl_event_members"("event_id", "user_id", "is_going", "is_
 INSERT INTO "public"."tbl_event_members"("event_id", "user_id", "is_going", "is_delete", "invite_id") VALUES(3, 1, TRUE, FALSE, 1);
 INSERT INTO "public"."tbl_event_members"("event_id", "user_id", "is_going", "is_delete", "invite_id") VALUES(3, 2, TRUE, FALSE, 2);
 INSERT INTO "public"."tbl_event_members"("event_id", "user_id", "is_going", "is_delete", "invite_id") VALUES(3, 3, TRUE, FALSE, 3);
------------------------- END INSERT DATA. ---------------------------------
+------------------------ END INSERT DATA. ---------------------------
+
+
+
+CREATE TABLE IF NOT EXISTS Team (
+    id SERIAL PRIMARY KEY,
+    name character varying(100) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS Player (
+    id SERIAL PRIMARY KEY,
+    team_id integer NOT NULL REFERENCES Team(id),
+    name character varying(100) NOT NULL,
+    num integer NOT NULL,
+    position character varying(100) NOT NULL
+);
+
+insert into Team (id,name) values(1,'Barcelona');
+
+insert into Player (id, team_id, name, num, position) values(1,1,'Lionel Messi', 10, 'Forward');
+insert into Player (id, team_id, name, num, position) values(2,1,'Andreas Inniesta', 8, 'Midfielder');
+insert into Player (id, team_id, name, num, position) values(3,1,'Pique', 3, 'Defender');

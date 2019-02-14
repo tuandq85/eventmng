@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: eventmng
+# Spring Boot configuration
+  profiles:
+    active: development
+  env:
+      ELEPHANTSQL_API_URL: "https://customer.elephantsql.com/api"
+      ELEPHANTSQL_API_KEY: "0afcda4d-e3d3-48df-ac82-93df7323a077"
+      ELEPHANTSQL_REGION: "amazon-web-services:US-East-1"
+
+# Database
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgres://sechyhej:gCTsiZbx1GzueI7wV6fNv-cuikHyVaXd@baasu.db.elephantsql.com:5432/sechyhej
+#    username: baasu.db.elephantsql.com
+#    password: gCTsiZbx1GzueI7wV6fNv-cuikHyVaXd
+
+# JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+# Logger configuration
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: INFO
+    org.hibernate: DEBUG
+
+server:
+  port: 8088
+  sessionTimeout: 30
+  error:
+    whitelabel.enabled: false
+    path: /api/error
+
+# Security configuration
+security:
+  user:
+    name: user
+    password: user
